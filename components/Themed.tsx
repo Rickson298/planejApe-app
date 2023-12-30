@@ -7,10 +7,10 @@ import { Text as DefaultText, useColorScheme, View as DefaultView } from 'react-
 
 import Colors from '../constants/Colors';
 
-type ThemeProps = {
+interface ThemeProps {
   lightColor?: string;
   darkColor?: string;
-};
+}
 
 export type TextProps = ThemeProps & DefaultText['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
@@ -22,7 +22,7 @@ export function useThemeColor(
   const theme = useColorScheme() ?? 'light';
   const colorFromProps = props[theme];
 
-  if (colorFromProps) {
+  if (colorFromProps != null) {
     return colorFromProps;
   } else {
     return Colors[theme][colorName];

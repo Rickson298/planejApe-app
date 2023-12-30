@@ -10,7 +10,7 @@ export function ExternalLink(
     <Link
       hrefAttrs={{
         // On web, launch the link in a new tab.
-        target: '_blank',
+        target: '_blank'
       }}
       {...props}
       // @ts-expect-error: External URLs are not typed.
@@ -20,7 +20,8 @@ export function ExternalLink(
           // Prevent the default behavior of linking to the default browser on native.
           e.preventDefault();
           // Open the link in an in-app browser.
-          WebBrowser.openBrowserAsync(props.href as string);
+          // eslint-disable-next-line @typescript-eslint/no-floating-promises
+          WebBrowser.openBrowserAsync(props.href);
         }
       }}
     />

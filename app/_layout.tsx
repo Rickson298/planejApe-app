@@ -1,18 +1,25 @@
+// Libs
+import { useEffect } from 'react';
 import {
+  Poppins_100Thin,
+  Poppins_300Light,
   Poppins_400Regular,
   Poppins_500Medium,
   Poppins_600SemiBold,
   useFonts
 } from '@expo-google-fonts/poppins';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { ThemeProvider, type Theme } from '@react-navigation/native';
 import { SplashScreen, Stack } from 'expo-router';
-import { useEffect } from 'react';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { ThemeProvider } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
 import { StatusBar } from 'expo-status-bar';
-import { THEME } from '@/theme';
+import { PaperProvider } from 'react-native-paper';
 
+// Constants
+import { PAPER_THEME } from '@/theme/paper-theme';
+import { ROUTER_THEME } from './configs/router/theme';
+
+// Exports
 export { ErrorBoundary } from 'expo-router';
 
 export const UNSTABLE_SETTINGS = {
@@ -25,10 +32,12 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
+    ...FontAwesome.font,
+    Poppins_100Thin,
+    Poppins_300Light,
     Poppins_400Regular,
     Poppins_500Medium,
-    Poppins_600SemiBold,
-    ...FontAwesome.font
+    Poppins_600SemiBold
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -50,26 +59,16 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const ROUTER_THEME: Theme = {
-    dark: true,
-    colors: {
-      primary: THEME['blue-700'],
-      background: THEME['blue-800'],
-      card: 'rgb(18, 18, 18)',
-      text: 'rgb(229, 229, 231)',
-      border: THEME['blue-400'],
-      notification: 'rgb(255, 69, 58)'
-    }
-  };
-
   return (
     <SafeAreaProvider>
-      <StatusBar style="light" />
-      <ThemeProvider value={ROUTER_THEME}>
-        <Stack>
-          <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
-        </Stack>
-      </ThemeProvider>
+      <PaperProvider theme={PAPER_THEME}>
+        <StatusBar style="inverted" />
+        <ThemeProvider value={ROUTER_THEME}>
+          <Stack>
+            <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+          </Stack>
+        </ThemeProvider>
+      </PaperProvider>
     </SafeAreaProvider>
   );
 }

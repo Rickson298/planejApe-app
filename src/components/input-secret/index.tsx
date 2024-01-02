@@ -6,7 +6,7 @@ import { TextInput } from 'react-native-paper';
 import { Input } from '../input';
 
 // Constants
-import { THEME } from '@/theme';
+import { THEME_COLORS } from '@/theme';
 
 // Types
 import { type InputProps } from '../input/types';
@@ -25,7 +25,7 @@ export function InputSecret(props: InputSecretProps) {
       label="Digite sua senha"
       right={
         <TextInput.Icon
-          color={THEME['blue-400']}
+          color={THEME_COLORS['blue-400']}
           forceTextInputFocus={false}
           onPress={handleSecretState}
           icon={isSecret ? 'eye' : 'eye-off'}

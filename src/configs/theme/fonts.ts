@@ -1,10 +1,10 @@
 import { configureFonts } from 'react-native-paper';
 
-const baseFont = {
+const BASE_FONT = {
   fontFamily: 'Poppins_400Regular'
 } as const;
 
-const baseVariants = configureFonts({ config: baseFont });
+const baseVariants = configureFonts({ config: BASE_FONT });
 
 const customVariants = {
   displayMedium: {

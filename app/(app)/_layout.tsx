@@ -1,19 +1,27 @@
+// libs
+import { AntDesign } from '@expo/vector-icons';
+import { Redirect } from 'expo-router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
-import AntDesign from '@expo/vector-icons/AntDesign';
 
-import React from 'react';
+import { THEME_COLORS } from '@/theme';
 
-export default function DrawerLayout() {
+export default function AppLayout() {
+  const session = false;
+
+  if (!session) {
+    return <Redirect href="/sign-in" />;
+  }
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
         screenOptions={{
-          headerStyle: { backgroundColor: '#0e131b' },
-          headerTintColor: '#fff',
+          headerStyle: { backgroundColor: THEME_COLORS['blue-800'] },
+          headerTintColor: THEME_COLORS.white,
           drawerActiveTintColor: '#496985',
           drawerStyle: {
-            backgroundColor: '#0e131b'
+            backgroundColor: THEME_COLORS['blue-800']
           }
         }}
       >
@@ -26,10 +34,11 @@ export default function DrawerLayout() {
           }}
         />
         <Drawer.Screen
-          name="two" // This is the name of the page and must match the url from root
+          name="other"
           options={{
-            drawerLabel: 'User',
-            title: 'Page 2'
+            drawerLabel: 'Other',
+            title: 'Page 1',
+            drawerIcon: ({ color }) => <AntDesign name="home" size={20} color={color} />
           }}
         />
       </Drawer>

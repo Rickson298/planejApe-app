@@ -14,17 +14,19 @@ import { ThemeProvider } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { PaperProvider } from 'react-native-paper';
+import { View } from 'react-native';
 
 // Constants
 import { PAPER_THEME } from '@/theme/paper-theme';
-import { ROUTER_THEME } from './configs/router/theme';
+import { ROUTER_THEME } from '@/configs/router/theme';
+import { THEME_COLORS } from '@/theme';
 
 // Exports
 export { ErrorBoundary } from 'expo-router';
 
-export const UNSTABLE_SETTINGS = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(drawer)'
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const unstable_settings = {
+  initialRouteName: '(app)'
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -61,14 +63,24 @@ export default function RootLayout() {
 function RootLayoutNav() {
   return (
     <SafeAreaProvider>
-      <PaperProvider theme={PAPER_THEME}>
-        <StatusBar style="inverted" />
-        <ThemeProvider value={ROUTER_THEME}>
-          <Stack>
-            <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
-          </Stack>
-        </ThemeProvider>
-      </PaperProvider>
+      <View style={{ padding: 0, margin: 0, flex: 1, backgroundColor: THEME_COLORS['blue-800'] }}>
+        <PaperProvider theme={PAPER_THEME}>
+          <StatusBar style="light" />
+          <ThemeProvider value={ROUTER_THEME}>
+            <Stack>
+              <Stack.Screen name="(app)" options={{ headerShown: false }} />
+              <Stack.Screen
+                name="create-account"
+                options={{ presentation: 'modal', headerShown: false }}
+              />
+              <Stack.Screen
+                name="sign-in"
+                options={{ presentation: 'modal', headerShown: false }}
+              />
+            </Stack>
+          </ThemeProvider>
+        </PaperProvider>
+      </View>
     </SafeAreaProvider>
   );
 }

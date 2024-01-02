@@ -1,4 +1,4 @@
-export const THEME = {
+export const THEME_COLORS = {
   'color-text': '#ffffff',
   'blue-50': '#9df1ff',
   'blue-100': '#a0cef3',

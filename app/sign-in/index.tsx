@@ -1,8 +1,8 @@
 // Libs
-import { View, Text as NativeText } from 'react-native';
-import { Button, Text } from 'react-native-paper';
+import { AntDesign } from '@expo/vector-icons';
 import { Link } from 'expo-router';
-import { FontAwesome } from '@expo/vector-icons';
+import { Text as NativeText, TouchableOpacity, View } from 'react-native';
+import { Button, Text } from 'react-native-paper';
 
 // Components
 import { Input } from '@/components/input';
@@ -17,14 +17,6 @@ import { styles } from './styles';
 export default function SignInScreen() {
   return (
     <View style={styles.container}>
-      {/* Balls */}
-      <View style={styles.ball}>
-        <FontAwesome name="dollar" color={THEME_COLORS['blue-800']} size={100} />
-      </View>
-      <View style={styles.ball_bottom}>
-        <FontAwesome name="home" color={THEME_COLORS['blue-800']} size={100} />
-      </View>
-
       {/* Form */}
       <View>
         <Text variant="displayMedium">Bem-vindo</Text>
@@ -62,6 +54,13 @@ export default function SignInScreen() {
         </NativeText>
         Crie uma conta
       </Link>
+
+      <View style={styles.social_media_container}>
+        <Text>Ou faça login com:</Text>
+        <TouchableOpacity onPress={console.log} style={styles.social_media_button}>
+          <AntDesign name="google" size={30} color={THEME_COLORS.white} />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

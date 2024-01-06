@@ -70,7 +70,7 @@ function RootLayoutNav() {
             <Stack>
               <Stack.Screen name="(app)" options={{ headerShown: false }} />
               <Stack.Screen
-                name="create-account"
+                name="sign-up"
                 options={{ presentation: 'modal', headerShown: false }}
               />
               <Stack.Screen

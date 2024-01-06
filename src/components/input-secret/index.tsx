@@ -22,6 +22,7 @@ export function InputSecret(props: InputSecretProps) {
 
   return (
     <Input
+      autoCapitalize="none"
       label="Digite sua senha"
       right={
         <TextInput.Icon

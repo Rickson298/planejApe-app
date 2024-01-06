@@ -30,9 +30,10 @@ export default function SignInScreen() {
         <Input keyboardType="email-address" label="Digite seu email" />
         <View style={styles.container_password}>
           <InputSecret />
-          <Link style={styles.forget_password_text} href="/create-account">
+          {/* TODO: implement forgot password */}
+          {/* <Link style={styles.forget_password_text} href="/sign-up">
             Esqueci a senha
-          </Link>
+          </Link> */}
         </View>
       </View>
 
@@ -48,7 +49,7 @@ export default function SignInScreen() {
       </Button>
 
       {/* Create account */}
-      <Link style={styles.create_account_text} href="/create-account">
+      <Link style={styles.create_account_text} href="/sign-up">
         <NativeText style={{ color: THEME_COLORS['blue-300'] }}>
           Ainda não tem uma conta?{' '}
         </NativeText>

@@ -1,13 +1,18 @@
 // libs
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, FontAwesome } from '@expo/vector-icons';
 import { Redirect } from 'expo-router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 
 import { THEME_COLORS } from '@/theme';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const unstable_settings = {
+  initialRouteName: '/products'
+};
+
 export default function AppLayout() {
-  const session = false;
+  const session = true;
 
   if (!session) {
     return <Redirect href="/sign-in" />;
@@ -34,11 +39,11 @@ export default function AppLayout() {
           }}
         />
         <Drawer.Screen
-          name="other"
+          name="products"
           options={{
-            drawerLabel: 'Other',
-            title: 'Page 1',
-            drawerIcon: ({ color }) => <AntDesign name="home" size={20} color={color} />
+            drawerLabel: 'Produtos',
+            title: 'Produtos',
+            drawerIcon: ({ color }) => <FontAwesome name="shopping-bag" size={20} color={color} />
           }}
         />
       </Drawer>

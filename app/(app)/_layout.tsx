@@ -31,6 +31,7 @@ export default function AppLayout() {
       <Tabs.Screen
         name="index"
         options={{
+          headerShown: false,
           tabBarLabel: 'Início',
           title: 'Início',
           tabBarIcon: ({ color }) => <AntDesign name="home" size={20} color={color} />
@@ -39,6 +40,7 @@ export default function AppLayout() {
       <Tabs.Screen
         name="products"
         options={{
+          headerShown: false,
           tabBarLabel: 'Produtos',
           title: 'Produtos',
           tabBarIcon: ({ color }) => <FontAwesome name="shopping-bag" size={20} color={color} />

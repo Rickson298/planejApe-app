@@ -1,8 +1,6 @@
 // libs
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
-import { Redirect } from 'expo-router';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Drawer } from 'expo-router/drawer';
+import { Redirect, Tabs } from 'expo-router';
 
 import { THEME_COLORS } from '@/theme';
 
@@ -19,34 +17,33 @@ export default function AppLayout() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <Drawer
-        screenOptions={{
-          headerStyle: { backgroundColor: THEME_COLORS['blue-800'] },
-          headerTintColor: THEME_COLORS.white,
-          drawerActiveTintColor: '#496985',
-          drawerStyle: {
-            backgroundColor: THEME_COLORS['blue-800']
-          }
+    <Tabs
+      screenOptions={{
+        headerStyle: { backgroundColor: THEME_COLORS['blue-800'] },
+        tabBarActiveTintColor: THEME_COLORS['blue-300'],
+        headerTintColor: THEME_COLORS.white,
+        tabBarStyle: {
+          backgroundColor: THEME_COLORS['blue-800']
+        },
+        unmountOnBlur: true
+      }}
+    >
+      <Tabs.Screen
+        name="index"
+        options={{
+          tabBarLabel: 'Início',
+          title: 'Início',
+          tabBarIcon: ({ color }) => <AntDesign name="home" size={20} color={color} />
         }}
-      >
-        <Drawer.Screen
-          name="index"
-          options={{
-            drawerLabel: 'Início',
-            title: 'Page 1',
-            drawerIcon: ({ color }) => <AntDesign name="home" size={20} color={color} />
-          }}
-        />
-        <Drawer.Screen
-          name="products"
-          options={{
-            drawerLabel: 'Produtos',
-            title: 'Produtos',
-            drawerIcon: ({ color }) => <FontAwesome name="shopping-bag" size={20} color={color} />
-          }}
-        />
-      </Drawer>
-    </GestureHandlerRootView>
+      />
+      <Tabs.Screen
+        name="products"
+        options={{
+          tabBarLabel: 'Produtos',
+          title: 'Produtos',
+          tabBarIcon: ({ color }) => <FontAwesome name="shopping-bag" size={20} color={color} />
+        }}
+      />
+    </Tabs>
   );
 }
